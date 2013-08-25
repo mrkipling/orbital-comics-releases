@@ -57,10 +57,6 @@ smtp_server = 'smtp.gmail.com:587'
 # Example: FAVOURITE_COMICS = ["Walking Dead", "Sheltered", "Sidekick"]
 FAVOURITE_COMICS = []
 
-# temporarily import my settings so that that I can commit easier (todo: remove)
-from settings import receiver_email, sender_email, sender_password, \
-    sender_name, FAVOURITE_COMICS
-
 
 
 ### And now the actual code
