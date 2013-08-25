@@ -14,18 +14,26 @@ It also takes an array of comics that I am particularly interested in, and if it
 
 ## How to use this
 
-It should be set up as a cron job on a VPS, home server, Raspberry Pi, basically any PC that is on at the time that it emails you.
+First of all, you need to fill out the "customisable settings" section in the script. Basically you need to enter an email address, password, and SMTP server (I've pre-filled it with Gmail's, assuming that you'll probably just use a Gmail account to send from). You can also populate the FAVOURITE_COMICS array while you're there.
 
-It has some requirements, most notably BeautifulSoup (pip install beautifulsoup4). I decided to not bundle everything as I wanted to keep this as simple as possible (just a script).
+The script should be set up as a cron job on a VPS, home server, Raspberry Pi... basically any PC that is on at the time that it emails you.
 
-**This is a work in progress.** I plan on making it better and adding some proper usage instructions. In the meantime just take a look at the script, it should be fairly self-explanatory.
+It has some requirements, most notably BeautifulSoup (pip install beautifulsoup4). I decided to not bundle everything as I wanted to keep this as simple as possible (just a single script).
+
+There are some command line switches that you can use:
+
+    python orbital.py --date=21-08-2014
+
+Supplying a date with the --date switch (in DD-MM-YYYY format) will use that date. Useful if you want to try it out, as otherwise the script only works on Comic Book Wednesday!
+
+    python orbital.py --console
+
+This will print the email body to the console and won't actually send an email. Not really all that useful I guess, but handy for testing.
 
 ## Please note...
 
 I am not affiliated with Orbital Comics in any way. It is just a fun, not-for-profit project that I wrote for myself and thought that other people might find useful.
 
-## In case you were wondering what the emails looks like...
-
-They look pretty basic, but they get the job done.
+## If you were wondering what the emails looks like...
 
 <img src="http://i.imgur.com/a1zWdp1.png" alt="Preview of an email">
