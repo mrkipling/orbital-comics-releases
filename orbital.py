@@ -8,7 +8,7 @@ import smtplib
 from bs4 import BeautifulSoup
 
 # Requirements: BeautifulSoup (pip install beautifulsoup4)
-
+#
 # This script scrapes the new comic releases from the Orbital comics website
 # (http://www.orbitalcomics.com) and emails them to you. You should set it up as
 # a cron job to run every Wednesday whenever you like (early in the morning
@@ -17,7 +17,7 @@ from bs4 import BeautifulSoup
 # By default you can just run the script and, assuming it is run on Comic Book
 # Wednesday, it will use today's date. However you can supply an arg in the
 # DD-MM-YYYY format which it will use instead (for testing purposes mostly),
-# like so: python orbital.py 21-08-2013
+# like so: python orbital.py --date=21-08-2013
 #
 # You need to edit the EMAIL SETTINGS section directly below with mail server
 # setings.
@@ -59,14 +59,22 @@ from settings import receiver_email, sender_email, sender_password, \
 ### And now the actual code
 
 if len(sys.argv) > 1:
-    # arg should be date in this format: 24-08-2013 (i.e. DD-MM-YYYY)
-    date = sys.argv[1]
+    args = sys.argv
+    sys.argv.pop(0)
 
-    if len(date) != 10:
-        raise Exception("Incorrect date formatting.")
+    for arg in args:
+        arg = arg.split('=')
+
+        # pass in a custom date (has to be in DD-MM-YYYY format)
+
+        if arg[0] == '--date':
+            date = arg[1]
+
+        if len(date) != 10:
+            raise Exception("Incorrect date formatting.")
 
 else:
-    # if no arg supplied, get current date, and hope it's a Wednesday
+    # if no args supplied, get current date, and hope it's a Wednesday
     weekday = datetime.date.today().strftime("%w")
 
     if weekday != "3": # Weds
