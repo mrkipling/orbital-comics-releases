@@ -4,7 +4,7 @@
 
 **Author**: [Bradley Abrahams](https://github.com/mrkipling)
 
----
+<hr style="height: 1px; background-image: none; background-color: #ddd;">
 
 [Orbital Comics](http://www.orbitalcomics.com/) is a very cool comic book shop in Central London.
 
