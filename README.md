@@ -1,4 +1,4 @@
-<img src="http://i.imgur.com/dPDgZqG.png" width="300" height="114" alt="Orbital Comics logo">
+<a href="http://www.orbitalcomics.com/"><img src="http://i.imgur.com/dPDgZqG.png" width="300" height="114" alt="Orbital Comics logo"></a>
 
 # Orbital Comics - new releases tool
 
@@ -17,3 +17,7 @@ It should be set up as a cron job on a VPS, home server, Raspberry Pi, basically
 It has some requirements, most notably BeautifulSoup (pip install beautifulsoup4). I decided to not bundle everything as I wanted to keep this as simple as possible (just a script).
 
 **This is a work in progress.** I plan on making it better and adding some proper usage instructions. In the mean time just take a look at the script, it should be fairly self-explanatory.
+
+## Please note...
+
+I am not affiliated with Orbital Comics in any way. It is just a fun, not-for-profit project that I wrote for myself and thought that other people might find useful.
