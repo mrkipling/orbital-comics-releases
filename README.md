@@ -8,9 +8,9 @@
 
 [Orbital Comics](http://www.orbitalcomics.com/) is a very cool comic book shop in Central London.
 
-New comics are consistently released every Wednesday. I decided to write a simple script to email me every Wednesday morning with a list of new comic releases that week, mostly for fun, but also because it's kind of nice having an automatic reminder in my inbox.
+New comics are consistently released every Wednesday. I decided to write a simple script to email me every Wednesday morning with a list of new comic releases that week, mostly for fun, but also because it's kind of nice having an automated reminder in my inbox.
 
-It also takes an array of comics that I am particularly interested in, and if it finds them in the list it highlights them at the top of the email so that I don't miss them.
+It also takes an array of comics that I am particularly interested in, and if it finds them in the list it highlights them at the top of the email. Now I'll never miss a copy of The Walking Dead!
 
 ## How to use this
 
