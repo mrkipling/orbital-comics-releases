@@ -119,7 +119,7 @@ for subtitle in subtitles:
 interesting = []
 
 for comic in FAVOURITE_COMICS:
-    comic_search = content.find(text=re.compile(comic))
+    comic_search = content.find(text=re.compile(comic, re.IGNORECASE))
     if comic_search:
         interesting.append(comic_search)
 
