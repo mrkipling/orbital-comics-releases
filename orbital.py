@@ -112,6 +112,12 @@ content.find(class_='share-buttons').extract()
 clears = content.find_all(class_='clear')
 [clear.extract() for clear in clears]
 
+subtitles = content.find_all('strong')
+
+for subtitle in subtitles:
+    subtitle['style'] = 'display: block; font-size: 16px;'
+    subtitle.insert_before(soup.new_tag('br'))
+
 # find interesting comics so that they can be placed at the top of the email
 
 interesting = []
@@ -160,6 +166,7 @@ Subject: New Orbital comic releases on Wednesday %s
                 <td style="padding: 10px 20px;
                            font: 13px/20px Arial, Helvetica, sans-serif;">
                     %s
+                    <br />
                 </td>
             </tr>
             <tr>
@@ -170,7 +177,7 @@ Subject: New Orbital comic releases on Wednesday %s
                 </td>
             </tr>
             <tr>
-                <td id="new_comics" style="padding: 10px 20px;
+                <td id="new_comics" style="padding: 0 20px 10px 20px;
                            font: 13px/20px Arial, Helvetica, sans-serif;">
                     %s
                 </td>
