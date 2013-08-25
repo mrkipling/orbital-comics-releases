@@ -4,6 +4,8 @@
 
 **Author**: [Bradley Abrahams](https://github.com/mrkipling)
 
+---
+
 [Orbital Comics](http://www.orbitalcomics.com/) is a very cool comic book shop in Central London.
 
 New comics are consistently released every Wednesday. I decided to write a simple script to email me every Wednesday morning with a list of new comic releases that week, mostly for fun, but also because it's kind of nice having an automatic reminder in my inbox.
