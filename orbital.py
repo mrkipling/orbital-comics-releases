@@ -121,16 +121,14 @@ for comic in FAVOURITE_COMICS:
     if comic_search:
         interesting.append(comic_search)
 
-interesting_msg = '<p style="font-size: 16px; font-weight: bold;">There are no \
-new interesting releases this week. Sorry!</p><p>But why not take a look at \
-what else is on offer...</p>'
+interesting_msg = '<p>There are no new interesting releases this week. Sorry!\
+</p><p>But why not take a look at what else is on offer...</p>'
 
 if len(interesting) > 0:
-    interesting_msg = '<p style="font-size: 16px; font-weight: bold;">New / interesting comics this week</p>'
-    interesting_msg += '<ul style="color: red">'
-    for msg in interesting:
-        interesting_msg += '<li>%s</li>' % (msg.encode('utf-8'))
-    interesting_msg += '</ul>'
+    interesting_msg = '<p>'
+    for comic in interesting:
+        interesting_msg += '%s<br />' % (comic.encode('utf-8'))
+    interesting_msg += '</p>'
 
 # format and send the email
 message = """From: %s <%s>
@@ -139,12 +137,49 @@ MIME-Version: 1.0
 Content-type: text/html
 Subject: New Orbital comic releases on Wednesday %s
 
-%s
-<p style="font-size: 16px; font-weight: bold;">Other Orbital Comics releases
-on Wednesday %s</p>
-%s
-""" % (sender_name, sender_email, receiver_email, fancy_date, interesting_msg, \
-           fancy_date, content)
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=320, target-densitydpi=device-dpi" />
+    </head>
+    <body>
+        <table width="100%%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td style="background-color: #6596C7; color: #fff;
+                           font: bold 16px Arial, Helvetica, sans-serif;
+                           padding: 10px 20px;">
+                    <a href="%s" style="color: #fff; text-decoration: none;">
+                        Orbital: your favourite comics released today, Wednesday %s
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px;
+                           font: 13px/20px Arial, Helvetica, sans-serif;">
+                    %s
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color: #6596C7; color: #fff;
+                           font: bold 16px Arial, Helvetica, sans-serif;
+                           padding: 10px 20px;">
+                    Other new comics released today
+                </td>
+            </tr>
+            <tr>
+                <td id="new_comics" style="padding: 10px 20px;
+                           font: 13px/20px Arial, Helvetica, sans-serif;">
+                    %s
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
+""" % (sender_name, sender_email, receiver_email, fancy_date, url, fancy_date, \
+           interesting_msg, content)
 
 if send_email:
     server = smtplib.SMTP(smtp_server)
