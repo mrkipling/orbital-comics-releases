@@ -58,6 +58,8 @@ from settings import receiver_email, sender_email, sender_password, \
 
 ### And now the actual code
 
+send_email = True
+
 if len(sys.argv) > 1:
     args = sys.argv
     sys.argv.pop(0)
@@ -72,6 +74,11 @@ if len(sys.argv) > 1:
 
         if len(date) != 10:
             raise Exception("Incorrect date formatting.")
+
+        # option to not send an email and just print to console (for testing)
+
+        if arg[0] == '--console':
+            send_email = False
 
 else:
     # if no args supplied, get current date, and hope it's a Wednesday
@@ -132,8 +139,12 @@ on Wednesday %s</p>
 """ % (sender_name, sender_email, receiver_email, fancy_date, interesting_msg, \
            fancy_date, content)
 
-server = smtplib.SMTP('smtp.gmail.com:587')
-server.starttls()
-server.login(sender_email, sender_password)
-server.sendmail(sender_email, receiver_email, message)
-server.quit()
+if send_email:
+    server = smtplib.SMTP('smtp.gmail.com:587')
+    server.starttls()
+    server.login(sender_email, sender_password)
+    server.sendmail(sender_email, receiver_email, message)
+    server.quit()
+
+else:
+    print message
