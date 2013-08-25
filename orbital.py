@@ -123,8 +123,8 @@ for comic in FAVOURITE_COMICS:
     if comic_search:
         interesting.append(comic_search)
 
-interesting_msg = '<p>There are no new interesting releases this week. Sorry!\
-</p><p>But why not take a look at what else is on offer...</p>'
+interesting_msg = '<p>None of your favourite comics have been released this \
+week. Bugger!</p><p>Why not take a look at what else is on offer though?</p>'
 
 if len(interesting) > 0:
     interesting_msg = '<p>'
