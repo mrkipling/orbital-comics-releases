@@ -45,6 +45,9 @@ sender_password = ''
 # your name (or whatever you want the email to say it is "from")
 sender_name = ''
 
+# SMTP server (if sending from a Gmail account then leave it as-is)
+smtp_server = 'smtp.gmail.com:587'
+
 # List your favourite comics in this array to have them appear in their own
 # section at the top of the email. Partial text match, case-insensitive.
 # Example: FAVOURITE_COMICS = ["Walking Dead", "Sheltered", "Sidekick"]
@@ -140,7 +143,7 @@ on Wednesday %s</p>
            fancy_date, content)
 
 if send_email:
-    server = smtplib.SMTP('smtp.gmail.com:587')
+    server = smtplib.SMTP(smtp_server)
     server.starttls()
     server.login(sender_email, sender_password)
     server.sendmail(sender_email, receiver_email, message)
