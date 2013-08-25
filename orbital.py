@@ -7,43 +7,56 @@ import urllib2
 import smtplib
 from bs4 import BeautifulSoup
 
-# requirements: BeautifulSoup (pip install beautifulsoup4)
+# Requirements: BeautifulSoup (pip install beautifulsoup4)
 
-# This script scrapes the new comic releases from the Orbital comics website (http://www.orbitalcomics.com) and emails them to you.
-# You should set it up as a cron job to run every Wednesday whenever you like (early in the morning perhaps?)
+# This script scrapes the new comic releases from the Orbital comics website
+# (http://www.orbitalcomics.com) and emails them to you. You should set it up as
+# a cron job to run every Wednesday whenever you like (early in the morning
+# perhaps - I go for 4am).
 #
-# By default you can just run the script and, assuming it is run on Comic Book Wednesday, it will use today's date.
-# However you can supply an arg in the DD-MM-YYYY format which it will use instead (for testing purposes mostly).
+# By default you can just run the script and, assuming it is run on Comic Book
+# Wednesday, it will use today's date. However you can supply an arg in the
+# DD-MM-YYYY format which it will use instead (for testing purposes mostly),
+# like so: python orbital.py 21-08-2013
 #
-# You need to change the EMAIL SETTINGS section directly below with mail server setings.
-# You can also edit the FAVOURITE_COMICS array (stright after email settings) which will push them to the top of your email, highlighted in red.
-# Basically this will tell you when The Walking Dead (or whatever you're into) is released at the very top of the email. Never miss a comic again.
-
-# Here we go. Good luck!
-
-
-
-# EMAIL SETTINGS
-
-receiver_name = '' # where you want to receive the email
-receiver_email = '' # who the email should come from
-
-gmail_from_name = '' # gmail account used to sned the email; name of account owner
-gmail_from = ''  # gmail account used to sned the email; account name / login
-gmail_password = ''      # gmail account used to sned the email; password
+# You need to edit the EMAIL SETTINGS section directly below with mail server
+# setings.
+#
+# You can also edit the FAVOURITE_COMICS array (straight after email settings).
+# This will push your favourite comics to the top of your email in their own
+# special section. You need not ever miss a comic again! If you don't want this
+# feature then just leave the array empty.
+#
+# Okay, let's do this!
 
 
 
-# Your favourite comics. These comics will be highlighted in red at the top of the enail.
-# List your favourite comics in this array so that you don't miss them. Partial text match.
+### CUSTOMISABLE SETTINGS
 
-FAVOURITE_COMICS = [
-    'Walking Dead', 'Sheltered', 'Dexter'
-]
+# email address where the email should be sent to
+receiver_email = ''
+
+# email account used to send the email; leave as-is to use the same address
+sender_email = receiver_email
+
+# password for the email account that you are sending the mail from
+sender_password = ''
+
+# your name (or whatever you want the email to say it is "from")
+sender_name = ''
+
+# List your favourite comics in this array to have them appear in their own
+# section at the top of the email. Partial text match, case-insensitive.
+# Example: FAVOURITE_COMICS = ["Walking Dead", "Sheltered", "Sidekick"]
+FAVOURITE_COMICS = []
+
+# temporarily import my settings so that that I can commit easier (todo: remove)
+from settings import receiver_email, sender_email, sender_password, \
+    sender_name, FAVOURITE_COMICS
 
 
 
-# And now the actual code
+### And now the actual code
 
 if len(sys.argv) > 1:
     # arg should be date in this format: 24-08-2013 (i.e. DD-MM-YYYY)
@@ -86,7 +99,9 @@ for comic in FAVOURITE_COMICS:
     if comic_search:
         interesting.append(comic_search)
 
-interesting_msg = '<p style="font-size: 16px; font-weight: bold;">There are no new interesting releases this week. Sorry!</p><p>But why not take a look at what else is on offer...</p>'
+interesting_msg = '<p style="font-size: 16px; font-weight: bold;">There are no \
+new interesting releases this week. Sorry!</p><p>But why not take a look at \
+what else is on offer...</p>'
 
 if len(interesting) > 0:
     interesting_msg = '<p style="font-size: 16px; font-weight: bold;">New / interesting comics this week</p>'
@@ -97,23 +112,20 @@ if len(interesting) > 0:
 
 # format and send the email
 message = """From: %s <%s>
-To: %s <%s>
+To: %s
 MIME-Version: 1.0
 Content-type: text/html
 Subject: New Orbital comic releases on Wednesday %s
 
 %s
-<p style="font-size: 16px; font-weight: bold;">Other Orbital Comics releases on Wednesday %s</p>
-
+<p style="font-size: 16px; font-weight: bold;">Other Orbital Comics releases
+on Wednesday %s</p>
 %s
-""" % (gmail_from_name, gmail_from, receiver_name, receiver_email, fancy_date, interesting_msg, fancy_date, content)
+""" % (sender_name, sender_email, receiver_email, fancy_date, interesting_msg, \
+           fancy_date, content)
 
-try:
-    server = smtplib.SMTP('smtp.gmail.com:587')
-    server.starttls()
-    server.login(gmail_from, gmail_password)
-    server.sendmail(gmail_from, receiver_email, message)
-    server.quit()
-
-except:
-    raise Exception("There was a problem sending the email.")
+server = smtplib.SMTP('smtp.gmail.com:587')
+server.starttls()
+server.login(sender_email, sender_password)
+server.sendmail(sender_email, receiver_email, message)
+server.quit()
