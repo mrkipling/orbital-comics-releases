@@ -109,10 +109,10 @@ content = soup.find(class_='entry-content')
 content.find(class_='share-buttons').extract()
 
 # get rid of all div.clear
-clears = content.findAll(class_='clear')
+clears = content.find_all(class_='clear')
 [clear.extract() for clear in clears]
 
-# find interesting comics, place them at the top of the email
+# find interesting comics so that they can be placed at the top of the email
 
 interesting = []
 
