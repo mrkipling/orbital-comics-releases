@@ -18,7 +18,7 @@ It should be set up as a cron job on a VPS, home server, Raspberry Pi, basically
 
 It has some requirements, most notably BeautifulSoup (pip install beautifulsoup4). I decided to not bundle everything as I wanted to keep this as simple as possible (just a script).
 
-**This is a work in progress.** I plan on making it better and adding some proper usage instructions. In the mean time just take a look at the script, it should be fairly self-explanatory.
+**This is a work in progress.** I plan on making it better and adding some proper usage instructions. In the meantime just take a look at the script, it should be fairly self-explanatory.
 
 ## Please note...
 
