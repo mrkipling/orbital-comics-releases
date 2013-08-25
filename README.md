@@ -12,6 +12,12 @@ New comics are consistently released every Wednesday. I decided to write a simpl
 
 It also takes an array of comics that I am particularly interested in, and if it finds them in the list it highlights them at the top of the email. Now I'll never miss a copy of The Walking Dead!
 
+## What do the emails looks like?
+
+They look pretty basic, but they get the job done.
+
+<img src="http://i.imgur.com/a1zWdp1.png" alt="Preview of an email">
+
 ## How to use this
 
 It should be set up as a cron job on a VPS, home server, Raspberry Pi, basically any PC that is on at the time that it emails you.
