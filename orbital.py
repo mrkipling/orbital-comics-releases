@@ -1,12 +1,9 @@
 #!/bin/env python
 
-import sys
-import re
-import datetime
-import urllib2
-import smtplib
-from bs4 import BeautifulSoup
-
+# Orbital Comics new releases email tool
+# Author: Bradley Abrahams
+# Available on GitHub: https://github.com/mrkipling/orbital-comics-releases
+#
 # Requirements: BeautifulSoup (pip install beautifulsoup4)
 #
 # This script scrapes the new comic releases from the Orbital comics website
@@ -28,6 +25,13 @@ from bs4 import BeautifulSoup
 # feature then just leave the array empty.
 #
 # Okay, let's do this!
+
+import sys
+import re
+import datetime
+import urllib2
+import smtplib
+from bs4 import BeautifulSoup
 
 
 

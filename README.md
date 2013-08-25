@@ -1,6 +1,6 @@
 <a href="http://www.orbitalcomics.com/"><img src="http://i.imgur.com/dPDgZqG.png" width="300" height="114" alt="Orbital Comics logo"></a>
 
-## Orbital Comics - new releases email tool
+## Orbital Comics new releases email tool
 
 **Author**: [Bradley Abrahams](https://github.com/mrkipling)
 
