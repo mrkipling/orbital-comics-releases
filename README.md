@@ -32,7 +32,7 @@ This will print the email body to the console and won't actually send an email. 
 
 ## Please note...
 
-I am not affiliated with Orbital Comics in any way. It is just a fun, not-for-profit project that I wrote for myself and thought that other people might find useful.
+I am not affiliated with Orbital Comics in any way. This is just a fun, not-for-profit project that I wrote for myself and thought that other people might find useful, so I decided to play nice and share.
 
 ## If you were wondering what the emails looks like...
 
