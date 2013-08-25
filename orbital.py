@@ -112,8 +112,8 @@ content.find(class_='share-buttons').extract()
 clears = content.find_all(class_='clear')
 [clear.extract() for clear in clears]
 
+# tweak styling of subheadings
 subtitles = content.find_all('strong')
-
 for subtitle in subtitles:
     subtitle['style'] = 'display: block; font-size: 16px;'
     subtitle.insert_before(soup.new_tag('br'))
