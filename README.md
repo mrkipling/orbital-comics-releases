@@ -40,7 +40,7 @@ Add the following line to make the script run every Wednesday at 4am (so that yo
 
     0 4 * * 3 python /path/to/orbital.py
 
-In this example 0 = 0 minutes, 4 = the 4th hour (i.e. 04:00am), the asterisks skip the next two settings, and 3 = day of week (Wednesday). The rest is the command that we are running (the script). The above info should allow you to modify the crontab setting to suit your requirements (change 4 to 10 if you want the email send at 10am, for example).
+In this example 0 = 0 minutes, 4 = the 4th hour (i.e. 04:00am), the asterisks skip the next two settings, and 3 = day of week (Wednesday). The rest is the command that we are running (the script). The above info should allow you to modify the crontab setting to suit your requirements (change 4 to 10 if you want the email to be sent at 10am, for example).
 
 ## Please note...
 
