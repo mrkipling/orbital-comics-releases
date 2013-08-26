@@ -30,6 +30,18 @@ Supplying a date with the --date switch (in DD-MM-YYYY format) will use that dat
 
 This will print the email body to the console and won't actually send an email. Not really all that useful I guess, but handy for testing.
 
+## Adding the script to crontab
+
+Open your crontab file for editing (on the server that will be sending the email):
+
+    sudo crontab -e
+
+Add the following line to make the script run every Wednesday at 4am (so that you have the email in your inbox when you wake up). Make sure the change the path name to point to the actual location of the script!
+
+    0 4 * * 3 python /path/to/orbital.py
+
+In this example 0 = 0 minutes, 4 = the 4th hour (i.e. 04:00am), the asterisks skip the next two settings, and 3 = day of week (Wednesday). The rest is the command that we are running (the script). The above info should allow you to modify the crontab setting to suit your requirements (change 4 to 10 if you want the email send at 10am, for example).
+
 ## Please note...
 
 I am not affiliated with Orbital Comics in any way. This is just a fun, not-for-profit project that I wrote for myself and thought that other people might find useful, so I decided to play nice and share.
