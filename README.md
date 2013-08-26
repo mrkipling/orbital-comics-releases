@@ -46,6 +46,6 @@ In this example 0 = 0 minutes, 4 = the 4th hour (i.e. 04:00am), the asterisks sk
 
 I am not affiliated with Orbital Comics in any way. This is just a fun, not-for-profit project that I wrote for myself and thought that other people might find useful, so I decided to play nice and share.
 
-## If you were wondering what the emails looks like...
+## If you were wondering what the emails look like...
 
 <img src="http://i.imgur.com/a1zWdp1.png" alt="Preview of an email">
