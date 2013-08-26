@@ -36,7 +36,7 @@ Open your crontab file for editing (on the server that will be sending the email
 
     sudo crontab -e
 
-Add the following line to make the script run every Wednesday at 4am (so that you have the email in your inbox when you wake up). Make sure the change the path name to point to the actual location of the script!
+Add the following line to make the script run every Wednesday at 4am (so that you have the email in your inbox when you wake up). Make sure to change the path name to point to the actual location of the script!
 
     0 4 * * 3 python /path/to/orbital.py
 
