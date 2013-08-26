@@ -152,14 +152,14 @@ Subject: New Orbital comic releases, Wednesday %s
             <tr>
                 <td style="background-color: #6596C7; color: #fff;
                            font: bold 16px Arial, Helvetica, sans-serif;
-                           padding: 10px 20px;">
+                           padding: 7px 10px;">
                     <a href="%s" style="color: #fff; text-decoration: none;">
                         Orbital: your favourite comics released today, Wednesday %s
                     </a>
                 </td>
             </tr>
             <tr>
-                <td style="padding: 10px 20px;
+                <td style="padding: 10px;
                            font: 13px/20px Arial, Helvetica, sans-serif;">
                     %s
                     <br />
@@ -168,12 +168,12 @@ Subject: New Orbital comic releases, Wednesday %s
             <tr>
                 <td style="background-color: #6596C7; color: #fff;
                            font: bold 16px Arial, Helvetica, sans-serif;
-                           padding: 10px 20px;">
+                           padding: 7px 10px;">
                     Other new comics released today
                 </td>
             </tr>
             <tr>
-                <td id="new_comics" style="padding: 0 20px 10px 20px;
+                <td id="new_comics" style="padding: 0 10px 10px;
                            font: 13px/20px Arial, Helvetica, sans-serif;">
                     %s
                 </td>
