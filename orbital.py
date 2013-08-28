@@ -90,7 +90,7 @@ else:
     if weekday != "3": # Weds
         raise Exception("Today is not a new comic day!")
 
-    date = datetime.date.today().strftime("%Y-%m-%d")
+    date = datetime.date.today().strftime("%d-%m-%Y")
 
 fancy_date = date # nicely formatted date for the email
 date = date.replace('-', '')
