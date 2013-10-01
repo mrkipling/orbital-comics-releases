@@ -96,8 +96,17 @@ fancy_date = date # nicely formatted date for the email
 date = date.replace('-', '')
 
 # fetch the comic list and parse it
+
 url = "http://www.orbitalcomics.com/new-comics-week-of-%s/" % (date)
-html = urllib2.urlopen(url).read()
+
+try:
+    html = urllib2.urlopen(url).read()
+
+except:
+    date = datetime.date.today().strftime("%d%m%y")
+    url = "http://www.orbitalcomics.com/new-comics-week-of-%s/" % (date)
+    html = urllib2.urlopen(url).read()
+
 soup = BeautifulSoup(html)
 
 # get rid of sharing buttons HTML
