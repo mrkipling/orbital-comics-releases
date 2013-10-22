@@ -12,6 +12,8 @@ New comics are consistently released every Wednesday. I decided to write a simpl
 
 It also takes an array of comics that I am particularly interested in, and if it finds them in the list it highlights them at the top of the email. Now I'll never miss a copy of The Walking Dead!
 
+**Warning!** This script guesses URLs based on dates and uses BeautifulSoup to parse the contents of a blog. As such it is rather flaky. Expect it to break occasionally!
+
 ## How to use this
 
 First of all, you need to fill out the "customisable settings" section in the script. Basically you need to enter an email address, password, and SMTP server (I've pre-filled it with Gmail's, assuming that you'll probably just use a Gmail account to send from). You can also populate the FAVOURITE_COMICS array while you're there.
