@@ -128,9 +128,9 @@ for subtitle in subtitles:
 interesting = []
 
 for comic in FAVOURITE_COMICS:
-    comic_search = content.find(text=re.compile(comic, re.IGNORECASE))
+    comic_search = content.find_all(text=re.compile(comic, re.IGNORECASE))
     if comic_search:
-        interesting.append(comic_search)
+        interesting.extend(comic_search)
 
 interesting_msg = '<p>None of your favourite comics have been released this \
 week. Bugger!</p><p>Why not take a look at what else is on offer though?</p>'
