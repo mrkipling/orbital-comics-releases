@@ -75,7 +75,7 @@ if len(sys.argv) > 1:
         if arg[0] == '--date':
             date = arg[1]
 
-        if len(date) != 10:
+        if len(date) < 8:
             raise Exception("Incorrect date formatting.")
 
         # option to not send an email and just print to console (for testing)
