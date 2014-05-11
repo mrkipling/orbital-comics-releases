@@ -130,7 +130,7 @@ def orbital(date, console):
 
     if console:
         if len(interesting) == 0:
-            print "None of your favourite comics have been released this week. Bugger!"
+            click.echo("None of your favourite comics have been released this week. Bugger!")
             return
 
         click.echo("\nOrbital: your favourite comics released today, %s\n" % fancy_date)
