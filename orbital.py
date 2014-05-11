@@ -33,6 +33,8 @@ import urllib2
 import smtplib
 import click
 from bs4 import BeautifulSoup
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 
 
@@ -62,12 +64,12 @@ FAVOURITE_COMICS = []
 
 ### And now the actual code
 
+
+
 @click.command()
 @click.option('--date', default='today', help='the date that you wish to receive an update for (DD-MM-YYYY) - if not specified then next Wednesday will be used')
 @click.option('--console', is_flag=True, help='log just your new comics to the console')
 def orbital(date, console):
-    send_email = True
-
     if date == 'today':
         date = datetime.date.today().strftime("%d-%m-%Y")
 
@@ -88,9 +90,6 @@ def orbital(date, console):
 
     fancy_date = date # nicely formatted date for the email
     date = date.replace('-', '')
-
-    if console:
-        send_email = False
 
     # fetch the comic list and parse it
 
@@ -152,13 +151,14 @@ def orbital(date, console):
         interesting_msg += '</p>'
 
     # format and send the email
-    message = """From: %s <%s>
-    To: %s
-    MIME-Version: 1.0
-    Content-type: text/html
-    Subject: New Orbital comic releases, Wednesday %s
 
-    <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN"
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = "New Orbital comic releases, Wednesday %s" % fancy_date
+    msg['From'] = sender_email
+    msg['To'] = receiver_email
+
+    text = ''
+    html = """<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html>
         <head>
@@ -200,18 +200,19 @@ def orbital(date, console):
             </table>
         </body>
     </html>
-    """ % (sender_name, sender_email, receiver_email, fancy_date, url, fancy_date, \
-               interesting_msg, content)
+    """ % (url, fancy_date, interesting_msg, content)
 
-    if send_email:
-        server = smtplib.SMTP(smtp_server)
-        server.starttls()
-        server.login(sender_email, sender_password)
-        server.sendmail(sender_email, receiver_email, message)
-        server.quit()
+    html = html.encode('ascii', 'ignore')
+    part1 = MIMEText(text, 'plain')
+    part2 = MIMEText(html, 'html')
+    msg.attach(part1)
+    msg.attach(part2)
 
-    else:
-        click.echo(message)
+    server = smtplib.SMTP(smtp_server)
+    server.starttls()
+    server.login(sender_email, sender_password)
+    server.sendmail(sender_email, receiver_email, msg.as_string())
+    server.quit()
 
 if __name__ == '__main__':
     orbital()
