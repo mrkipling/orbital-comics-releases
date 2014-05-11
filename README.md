@@ -26,11 +26,11 @@ There are some command line switches that you can use:
 
     python orbital.py --date=21-08-2014
 
-Supplying a date with the --date switch (in DD-MM-YYYY format) will use that date. Useful if you want to try it out, as otherwise the script only works on Comic Book Wednesday!
+Supplying a date with the --date switch (in DD-MM-YYYY format) will use that date. If you don't specify a date then the current date will be used. If the current date is not a Wednesday then the script will figure out the date of the next Wednesday and use that.
 
     python orbital.py --console
 
-This will print the email body to the console and won't actually send an email. Not really all that useful I guess, but handy for testing.
+This will print a list of your favourite comics that are due to be released to the console instead of sending an email. I find this handy if I want to quickly check what is being released this week, before the email sends (sometimes I get impatient!)
 
 ## Adding the script to crontab
 
